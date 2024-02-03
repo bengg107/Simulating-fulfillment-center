@@ -19,17 +19,19 @@ def generate_orderbook(N, M):
     
     return orderbook
 
-
+# given N number of items, which is assumed to be divisible by 4, output a list of coordinates on the square
+# this functions returns a list
 def position_function(N):
     intN = int(N/4)
-    a1 =  [ (i+1 , 0) for i in range(intN)]  
-    a2 = [ (intN, i+1) for i in range(intN)] 
-    a3 = [ (0, i+1) for i in range(intN)]
-    a4 = [ (i+1, intN) for i in range(intN-1)]
-    a = [*a1, *a2, *a3, *a4]
+    a1 =  [ (i+1 , 0) for i in range(intN)]    # bottom side
+    a2 = [ (intN, i+1) for i in range(intN)]   # right side
+    a3 = [ (0, i+1) for i in range(intN)]      # left side
+    a4 = [ (i+1, intN) for i in range(intN-1)] # top side
+    a = [*a1, *a2, *a3, *a4]                   # concat the sides together
     return a
 
+# given N number of items, return  which is assumed to be divisible by 4, return a list of randomised coordinates
 def position_random_generator(N):
-    positions = position_function(N)
-    random.shuffle(positions)
+    positions = position_function(N)         # generate positions ordered in a certain manner
+    random.shuffle(positions)                # shuffle the items in the list
     return positions
