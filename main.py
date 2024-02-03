@@ -92,12 +92,30 @@ def OrderToCoord(order, wjlist, N):
     coord = [diction[item] for item in order]
     return coord
 
-def DistanceList(N, M):
+def TrivialOrderToCoord(order, wjlist, N):
+# given order and number of items, return the coordinates of these items in a list
+    a = position_function(N)
+    #sorting_index = (np.argsort(wjlist))[::-1]
+    sorting_index = np.arange(N)
+    diction = {i: a[sorting_index[i]] for i in range(N)}
+    coord = [diction[item] for item in order]
+    return coord
+
+def DistanceList1(N, M):
     [orderbook,wjlist] = generate_orderbook(N, M)
     arr_len = []
     for i in range(M): # item in order[0]:
         item0 = np.ndarray.tolist(orderbook[i])
         item0 = OrderToCoord(item0, wjlist, N)
+        arr_len.append(robot_dist(item0))
+    return arr_len
+
+def DistanceList2(N, M):
+    [orderbook,wjlist] = generate_orderbook(N, M)
+    arr_len = []
+    for i in range(M): # item in order[0]:
+        item0 = np.ndarray.tolist(orderbook[i])
+        item0 = TrivialOrderToCoord(item0, wjlist, N)
         arr_len.append(robot_dist(item0))
     return arr_len
 
