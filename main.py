@@ -124,7 +124,7 @@ def DistanceList2(N, M):
 # print(njlist[1])
 # print((np.argsort(njlist[1]))[::-1])
 
-arr_len = DistanceList(100,400)
+arr_len = DistanceList1(100,400)
 
 print(arr_len)
 import matplotlib.pyplot as plt
