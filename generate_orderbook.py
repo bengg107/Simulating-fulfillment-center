@@ -35,3 +35,13 @@ def position_random_generator(N):
     positions = position_function(N)         # generate positions ordered in a certain manner
     random.shuffle(positions)                # shuffle the items in the list
     return positions
+
+def dictionary_func(N): # come up with a dictionary given N number of items. It assigns the item to a position in a naive way.
+    a = position_function(N)
+    diction = {i: a[i] for i in range(N-1)}
+    return diction
+
+def OrderToCoord(order, N): # given order and number of items, return the coordinates of these items in a list
+    diction_tr = dictionary_func(N)
+    coord = [diction_tr[item] for item in order]
+    return coord
